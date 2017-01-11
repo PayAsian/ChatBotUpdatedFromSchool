@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>10</x>
+      <y>30</y>
+      <w>380</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>chat.controller :: ChatRunner
+--
+
+--
++ main(String[]) : void
+bg=magenta</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>10</x>
+      <y>350</y>
+      <w>370</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>chat.controller :: ChatController
+--
+- stupidBot : Chatbot
+- display : ChatbotViewer
+--
++ start() : void 
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>10</x>
+      <y>500</y>
+      <w>380</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>chat.view :: ChatbotViewer
+--
+
+--
++ displayMessage(String) : void
++ collectResponse(String) : String
++ collectOption(String) : int
+bg=light_gray</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>510</x>
+      <y>50</y>
+      <w>480</w>
+      <h>290</h>
+    </coordinates>
+    <panel_attributes>chat.model :: Chatbot
+--
+-ArrayList memesList
+-Arraylist politicalTopicList
+-String userName
+-String content
+--
++Chatbot(String)
+-boolean buildMemesList()
+-boolean buildPoliticalTopicList()
++boolean lengthChecker()
++boolean politicalTopicChecker()
++boolean memeChecker
++String getuserName()
++String getContent()
++ArrayList getMemesList()
++setContent()
+bg=pink</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
