@@ -203,7 +203,17 @@ public class ChatbotTest
 		assertTrue("Incorrect meme Topic check", sampleBot.memeChecker("harambe"));
 		assertFalse("Incorrect meme Topic check", sampleBot.memeChecker("ambe"));
 		assertTrue("Incorrect meme Topic check", sampleBot.memeChecker("john cena"));
-		assertFalse("Incorrect meme Topic check", sampleBot.memeChecker("john"));
+		assertTrue("Meme Topic check", sampleBot.getMemesList().contains("dat boi"));
+		assertTrue("Meme Topic check", sampleBot.getMemesList().contains("Ayyy lmao"));
+		assertFalse("Meme Topic check", sampleBot.getMemesList().contains("haun cena"));
+		assertTrue("Meme Topic check", sampleBot.getMemesList().contains("Zoidberg"));
+		assertTrue("Meme Topic check", sampleBot.getMemesList().contains("Kappa"));
+		assertTrue("Meme Topic check", sampleBot.getMemesList().contains("Pogchamp"));
+		assertTrue("Meme Topic check", sampleBot.getMemesList().contains("Milk man"));
+		assertTrue("Meme Topic check", sampleBot.getMemesList().contains("JUST DO IT"));
+		assertTrue("Meme Topic check", sampleBot.getMemesList().contains("SENPAI"));
+		assertTrue("Meme Topic check", sampleBot.getMemesList().contains("I can't even"));
+		assertTrue("Meme Topic check", sampleBot.getMemesList().contains("All the things"));
 	}
 	
 	@Test

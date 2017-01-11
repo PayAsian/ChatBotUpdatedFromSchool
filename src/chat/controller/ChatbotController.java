@@ -55,6 +55,12 @@ public class ChatbotController
 		}
 		return answer;
 	}
+	
+	public void setBaseFrame(String baseFrame)
+	{
+		
+		this.setbaseFrame = new baseFrame;
+	}
 
 	
 }

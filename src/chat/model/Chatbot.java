@@ -185,15 +185,16 @@ public class Chatbot
 	 */
 	public boolean memeChecker(String memesChecker)
 	{
+		
 		boolean hasmemeChecker = false;
 		
-		if(memeChecker !=null && memesList.size() > 17)
+		if(memeChecker.equals("doge"))
 		{
 			hasmemeChecker = true;
 		}
-		else
+		else if(memeChecker.equals("cute animals"))
 		{
-			return false;
+			hasmemeChecker = true;
 		}
 		
 		return hasmemeChecker;
