@@ -1,6 +1,8 @@
 package chat.view;
 
 import chat.controller.ChatbotController;
+import chat.controller.FileController;
+
 import javax.swing.*;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -35,7 +37,7 @@ public class ChatPanel extends JPanel
 		
 		setupChatDisplay();
 		setupPanel();
-		setupLayout();
+		setupLayout();   
 		setupListeners();
 		
 	}
@@ -46,6 +48,9 @@ public class ChatPanel extends JPanel
 		chatDisplay.setEnabled(false);
 		chatDisplay.setLineWrap(true);
 		chatDisplay.setWrapStyleWord(true);
+		chatPane.setViewportView(chatDisplay);
+		chatPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+		chatPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		
 	}
 	
@@ -89,11 +94,33 @@ public class ChatPanel extends JPanel
 			{
 				String userWords = chatField.getText();
 				String botResponse = baseController.useChatbotCheckers(userWords);
+				String currentText = chatDisplay.getText();
 				
-				chatDisplay.setText("You said: " + userWords + "\n" + "ChatBot said: " + botResponse);
+				chatDisplay.setText("You said: " + userWords + "\n" + "ChatBot said: " + botResponse + "\n" + currentText);
+				chatDisplay.setCaretPosition(chatDisplay.getCaretPosition());
 				chatField.setText("");
 			}
 		});
+		
+		save.addActionListener(new ActionListener()
+				{
+					public void actionPerformed(ActionEvent click)
+					{
+						String fileName = chatField.getText();
+						
+						FileController.saveFile(baseController,  fileName.trim(), chatDisplay.getText());
+					}
+				});
+		
+		load.addActionListener(new ActionListener()
+				{
+					public void actionPerformed(ActionEvent click)
+					{
+						String fileName = chatField.getText() + ".txt";
+						String saved = FileController.readFile(baseController, fileName);
+						chatDisplay.setText(saved);
+					}
+				});
 		}
 	
 }
