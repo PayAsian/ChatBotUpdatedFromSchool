@@ -2,19 +2,19 @@ package chat.controller;
 
 import chat.view.ChatFrame;
 import chat.model.Chatbot;
-import chat.view.ChatViewer;
+import chat.view.*;
 
 public class ChatbotController
 
 {
 	private Chatbot stupidBot;
-	private ChatViewer chatView;
+	private ChatViewer display;
 	
 	
 	public ChatbotController()
 	{
 		stupidBot = new Chatbot("Penguin's");
-		chatView = new ChatViewer();
+		display = new ChatViewer();
 	}
 	
 	
@@ -23,11 +23,11 @@ public class ChatbotController
 	public void start()
 	{
 		
-		String response = chatView.collectResponse("What do you want to talk aobut today?????");
+		String response = display.collectResponse("What do you want to talk aobut today?????");
 		
 		while(stupidBot.lengthChecker(response))
 		{
-			response = chatView.collectResponse("Oh, you are interested in " + response);
+			response = display.collectResponse("Oh, you are interested in " + response);
 			
 		}
 	
@@ -37,6 +37,8 @@ public class ChatbotController
 		}
 		
 	}
+	
+	
 	public String useChatbotCheckers(String input)
 	{
 		String answer = "";
@@ -60,6 +62,12 @@ public class ChatbotController
 	{
 		
 		this.setbaseFrame = new baseFrame;
+	}
+	
+	public void handleErrors(Exception currentException)
+	{
+		display.displayMessage("An error has occurred. Details provided next.");
+		display.displayMessage(currentException.getMessage());
 	}
 
 	
