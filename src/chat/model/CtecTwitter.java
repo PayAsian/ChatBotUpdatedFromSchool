@@ -36,4 +36,19 @@ public class CtecTwitter
 			baseController.handleErrors(otherError);
 		}
 	}
+	
+	private void createIgnoredWordList()
+	{
+		
+	}
+	
+	private void collectTweets(String username)
+	{
+		
+	}
+	
+	public String getMostCommonWord()
+	{
+		return null;
+	}
 }
