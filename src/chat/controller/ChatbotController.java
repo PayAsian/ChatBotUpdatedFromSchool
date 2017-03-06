@@ -2,6 +2,7 @@ package chat.controller;
 
 import chat.view.ChatFrame;
 import chat.model.Chatbot;
+import chat.model.CtecTwitter;
 import chat.view.*;
 
 public class ChatbotController
@@ -9,7 +10,8 @@ public class ChatbotController
 {
 	private Chatbot stupidBot;
 	private ChatViewer display;
-	
+	private String baseFrame;
+	private CtecTwitter tweetBot;
 	
 	public ChatbotController()
 	{
@@ -61,13 +63,18 @@ public class ChatbotController
 	public void setBaseFrame(String baseFrame)
 	{
 		
-		this.setbaseFrame = new baseFrame;
+		this.baseFrame = baseFrame;
 	}
 	
 	public void handleErrors(Exception currentException)
 	{
 		display.displayMessage("An error has occurred. Details provided next.");
 		display.displayMessage(currentException.getMessage());
+	}
+	
+	public void useTwitter(String text)
+	{
+		tweetBot.sendTweet(text);
 	}
 
 	
