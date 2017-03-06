@@ -1,14 +1,19 @@
 package chat.model;
 
+import java.util.List;
+import java.util.ArrayList;
 import chat.controller.ChatbotController;
 import twitter4j.Twitter;
 import twitter4j.TwitterFactory;
 import twitter4j.TwitterException;
+import twitter4j.Status;
 
 public class CtecTwitter 
 {
 	private ChatbotController baseController;
 	private Twitter twitterBot;
+	private List<Status> searchedTweets;
+	private List<String> ignoredWords;
 	
 	public CtecTwitter(ChatbotController baseController)
 	{
