@@ -41,12 +41,28 @@ public class CtecTwitter
 		}
 	}
 	
-	public String getMostPopularWord()
+	public String getMostPopularWord(String username)
 	{
+		gatherTheTweets(username);
 		removeBoringWords();
 		removeBlankWords();
 		
-		return "";
+		String information = "The tweetCount is " + allTheTweets.size() + " and the word count after removal is " + tweetedWords.size();
+		
+		return information;
+	}
+	
+	private void turnTweetsToWords()
+	{
+		for(Status currentTweet : allTheTweets)
+		{
+			String text = currentTweet.getText();
+			String [] tweetWords = text.split(" ");
+			for(String word : tweetWords)
+			{
+				tweetedWords.add(word);
+			}
+		}
 	}
 	
 	private String [] createIgnoredWordsArray()
@@ -57,6 +73,7 @@ public class CtecTwitter
 		Scanner boringWordScanner = new Scanner(this.getClass().getResourceAsStream("commonWords.txt"));
 		while(boringWordScanner.hasNextLine())
 		{
+			boringWordScanner.nextLine();
 			wordCount++;
 		}
 		boringWordScanner.close();
@@ -99,12 +116,11 @@ public class CtecTwitter
 			{
 				tweetedWords.remove(index);
 				index--;
-				blankIndex = blankWords.length;
 			}
 		}
 	}
 
-	private void gatherTheTweets()
+	private void gatherTheTweets(String user)
 	{
 		tweetedWords.clear();
 		allTheTweets.clear();
@@ -113,7 +129,15 @@ public class CtecTwitter
 		
 		while(pageCount <= 10)
 		{
-			pageCount++;
+			try
+			{
+			allTheTweets.addAll(twitterBot.getUserTimeline(user, statusPage));
+			}
+			catch(TwitterException twitterError)
+			{
+				baseController.handleErrors(twitterError);
+			}
+				pageCount++;
 		}
 		
 	}
