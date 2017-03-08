@@ -19,6 +19,7 @@ public class ChatPanel extends JPanel
 	private JButton sendTweet;
 	private JButton save;
 	private JButton load;
+	private JButton searchTwitter;
 
 	public ChatPanel(ChatbotController baseController)
 	{
@@ -32,6 +33,7 @@ public class ChatPanel extends JPanel
 		sendTweet = new JButton();
 		save = new JButton();
 		load = new JButton();
+		searchTwitter = new JButton();
 		
 		
 		
@@ -65,6 +67,7 @@ public class ChatPanel extends JPanel
 		this.add(save);
 		this.add(load);
 		this.add(chatField);
+		this.add(searchTwitter);
 	}
 	
 	private void setupLayout()
@@ -128,6 +131,15 @@ public class ChatPanel extends JPanel
 					{
 						baseController.useTwitter(chatField.getText());
 					}
+				});
+		
+		searchTwitter.addActionListener(new ActionListener()
+				{
+				public void actionPerformed(ActionEvent click)
+				{
+					String username = chatField.getText();
+					chatDisplay.append(baseController.searchTwitter(username));
+				}
 				});
 		
 		}

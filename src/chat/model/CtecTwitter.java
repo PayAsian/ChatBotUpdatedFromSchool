@@ -47,7 +47,12 @@ public class CtecTwitter
 		
 	}
 	
-	public String getMostCommonWord()
+	public String getMostPopularWord()
+	{
+		return "";
+	}
+	
+	private String [] createIgnoredWordsArray()
 	{
 		return null;
 	}
