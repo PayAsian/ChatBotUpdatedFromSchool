@@ -8,6 +8,7 @@ import twitter4j.Twitter;
 import twitter4j.TwitterFactory;
 import twitter4j.TwitterException;
 import twitter4j.Status;
+import twitter4j.Paging;
 
 public class CtecTwitter 
 {
@@ -102,5 +103,18 @@ public class CtecTwitter
 			}
 		}
 	}
-	
+
+	private void gatherTheTweets()
+	{
+		tweetedWords.clear();
+		allTheTweets.clear();
+		int pageCount = 1; 
+		Paging statusPage = new Paging(1, 200);
+		
+		while(pageCount <= 10)
+		{
+			pageCount++;
+		}
+		
+	}
 }
