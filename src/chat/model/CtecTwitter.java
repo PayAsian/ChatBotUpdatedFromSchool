@@ -141,4 +141,34 @@ public class CtecTwitter
 		}
 		
 	}
+	
+	private String calculateTopWord()
+	{
+		String results = ""; 
+		String topWord = "";
+		int mostPopularIndex = 0;
+		int popularCount = 0;
+		
+		for(int index = 0; index < tweetedWords.size(); index++)
+		{
+			for(int searched = index + 1; searched < tweetedWords.size(); searched++)
+			{
+				int currentPopularity = 0;
+				if(tweetedWords.get(index).equalsIgnoreCase(tweetedWords.get(searched)))
+				{
+					currentPopularity++;
+				}
+			}
+			if(currentPopularity > popularCount)
+			{
+				popularCount = currentPopularity;
+				mostPopularIndex = index;
+				topWord= tweetedWords.get(mostPopularIndex);
+			}
+		}
+		results += " the most popular word was " + topWord + ", and it occurred " + popularCount + " times.";
+		results =+ "\nThat means it has a percentage of " + ((double)popularCount)/tweetedWords.size() + "%";
+		
+		return results;
+	}
 }
