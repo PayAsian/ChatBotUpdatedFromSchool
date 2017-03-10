@@ -84,6 +84,11 @@ public class ChatbotController
 		
 		return results;
 	}
+	
+	public ChatViewer getPopup()
+	{
+		return display;
+	}
 
 	
 }
