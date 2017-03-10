@@ -20,6 +20,7 @@ public class ChatPanel extends JPanel
 	private JButton save;
 	private JButton load;
 	private JButton searchTwitter;
+	private JScrollPane chatPane;
 
 	public ChatPanel(ChatbotController baseController)
 	{
@@ -34,6 +35,7 @@ public class ChatPanel extends JPanel
 		save = new JButton();
 		load = new JButton();
 		searchTwitter = new JButton();
+		chatPane = new JScrollPane();
 		
 		
 		

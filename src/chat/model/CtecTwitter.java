@@ -1,6 +1,7 @@
 package chat.model;
 
 import java.util.List;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
 import chat.controller.ChatbotController;
@@ -159,16 +160,32 @@ public class CtecTwitter
 					currentPopularity++;
 				}
 			}
-			if(currentPopularity > popularCount)
+			if(mostPopularIndex > popularCount)
 			{
-				popularCount = currentPopularity;
+				popularCount = mostPopularIndex;
 				mostPopularIndex = index;
 				topWord= tweetedWords.get(mostPopularIndex);
 			}
 		}
-		results += " the most popular word was " + topWord + ", and it occurred " + popularCount + " times.";
-		results =+ "\nThat means it has a percentage of " + ((double)popularCount)/tweetedWords.size() + "%";
+		results += " the most popular word was " + topWord + ", and it occurred " + popularCount +
+								" times out of " + tweetedWords.size() + ", AKA " + (DecimalFormat.getPercentInstance().format(((double)popularCount)/tweetedWords.size()));
 		
 		return results;
 	}
+	
+	private String removePunctuation(String currentString)
+	{
+		String punctuation = ",./?;:'[]{}<>-";
+		
+		String scrubbedString = "";
+		for(int i = 0; i < currentString.length(); i++)
+		{
+			if(punctuation.indexOf(currentString.charAt(i)) == -1)
+			{
+				scrubbedString += currentString.charAt(i);
+			}
+		}
+		return scrubbedString;
+	}
+	
 }
